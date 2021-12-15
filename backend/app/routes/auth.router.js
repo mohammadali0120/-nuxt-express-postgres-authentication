@@ -10,7 +10,7 @@ module.exports = (app) => {
   authRouter.post("/refresh-token", authController.postRefreshToken);
   authRouter.post("/users", isAuth, authController.getAllUsers); // you should add isAuth for those routes that you gonna protect them
 
-  authRouter.get("/user", authController.getUser);
+  authRouter.get("/user", isAuth, authController.getUser);
 
   app.use("/api/auth/", authRouter);
 };
